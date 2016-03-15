@@ -1,0 +1,63 @@
+<link rel="import" href="bower_compnents/polymer/polymer.html">
+
+<dom-module id="contact-card2">
+<style>
+    h1 {
+        margin: 10px;
+    }
+
+    h2 {
+        margin: 10px;
+    }
+
+    .box {
+        float: left;
+        border: solid;
+        border-width: medium;
+        margin: auto;
+        text-align: left;
+        width: 350px;
+        overflow: auto;
+    }
+
+    img{
+        float: right;
+        margin: 5px 0 0 30px;
+    }
+</style>
+
+<template>
+        <div class="box">
+            <img src="download.jpeg" alt="Boba Fett Helmet" width="160" height="200">
+            <h1>{{fullName}}</h1>
+            <h2>Kamino</h2>
+            <h2>Male</h2>
+            <h2>Bad Ass</h2>
+        </div>
+
+</template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "contact-card2",
+
+        properties: {
+            firstName: String,
+            lastName: {
+                type: String,
+                value: 'Starkiller'
+            },
+            fullName: {
+                type: String,
+                computed: 'computeFullName(firstName, lastName)'
+            }
+        },
+
+        // Similar to regular function
+        computeFullName: function(firstName, lastName){
+            return firstName + ' ' + lastName;
+        }
+
+    });
+</script>
