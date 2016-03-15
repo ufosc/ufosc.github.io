@@ -1,0 +1,26 @@
+{
+  "name": "UF Open Source Club",
+  "homepage": "https://github.com/UFOSC/Website",
+  "authors": [
+    "Nerdboy314 <mdbooe@gmail.com>"
+  ],
+  "description": "The UF Open Source Club's Website",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "UF",
+    "Open Source",
+    "University of Florida"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0"
+  }
+}
