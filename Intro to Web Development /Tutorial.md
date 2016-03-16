@@ -2,7 +2,7 @@
 
 ## How to write
 
-All of the following code can be written in any simple text editor, such as NotePad or TextEdit. Atom or Sublime Text are nice text editors with some built in support for some more advanced features. (Side note: This is a markdown file, and can be viewed in a markdown format by pressing `control + shift + m` in atom). To view the webpages, you can simply open them up in a web browser by either typing the file path into your browser or dragging the file from your file explore onto the browser. If you are using Atom or Sublime Text, you can also install plugins to view the webpage inside the editor itself. Consult Google for details. 
+All of the following code can be written in any simple text editor, such as NotePad or TextEdit. Atom or Sublime Text are nice text editors with some built in support for some more advanced features. (Side note: This is a markdown file, and can be viewed in a markdown format by pressing `control + shift + m` in atom). To view the webpages, you can simply open them up in a web browser by either typing the file path into your browser or dragging the file from your file explore onto the browser. If you are using Atom or Sublime Text, you can also install plugins to view the webpage inside the editor itself. Consult Google for details.
 
 ## HTML
 
@@ -152,7 +152,13 @@ In terminal after step 1
 
 To run the webpage in a browser use the following python (must have python installed)
 
+On Linux and OSX use:
+
 `python -m SimpleHTTPServer 8080`
+
+On Windows use:
+
+`python -m http.server 8080`
 
 Then type the following url in your preferred browser
 
