@@ -127,6 +127,8 @@ In terminal after step 1
 1. Download node.js
 
     - **Node.js** is a runtime environment for developing web applications.
+    
+    - Can be found here https://nodejs.org/en/ or via system package manager 
 
     - Also contains npm, a package manager for (mostly) javascript modules
 
