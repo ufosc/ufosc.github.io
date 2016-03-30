@@ -1,5 +1,11 @@
 <!doctype html>
 
+<!-- Notes
+1. To make the side menu text not highlight-able you can make it a routing link
+2. Make the side menu text pulse on click
+3.
+ -->
+
 <html lang="en">
 
     <head>
@@ -20,7 +26,6 @@
 
     </head>
     <body unresolved>
-
         <template is="dom-bind" id="app">
 
             <!-- Side/Menu Pannel -->
@@ -42,13 +47,31 @@
                         </a>
 
                         <a>
-                            <span>Users</span>
+                            <iron-icon icon="hardware:developer-board"></iron-icon>
+                            <span>Projects</span>
                         </a>
 
                         <a>
-                            <iron-icon icon="maps:directions-bus"></iron-icon>
-                            <span>Contact</span>
+                            <iron-icon icon="icons:event"></iron-icon>
+                            <span>Events</span>
                         </a>
+
+                        <a>
+                            <iron-icon icon="social:person"></iron-icon>
+                            <span>Members</span>
+                        </a>
+
+                        <a>
+                            <iron-icon icon="hardware:device-hub"></iron-icon>
+                            <span>Suggestions</span>
+                        </a>
+
+                        <a>
+                            <iron-icon icon="info"></iron-icon>
+                            <span>About</span>
+                        </a>
+
+
                     </paper-menu>
                 </paper-scroll-header-panel>
 
