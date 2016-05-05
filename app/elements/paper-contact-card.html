@@ -1,0 +1,81 @@
+<link rel="import" href="bower_compnents/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+
+<dom-module id="paper-contact-card">
+    <style>
+        paper-card { @apply(--layout-horizontal); }
+        .contact-image {
+            width: 135px;
+            height: auto;
+            background: url('../images/download.jpeg');
+            background-size: cover;
+            /*background-size: contain;
+            background-repeat: no-repeat;
+            width: 130px;
+            height: auto;*/
+        }
+        .contact-content {
+            @apply(--layout-flex);
+            float: left;
+        }
+        .contact-name { @apply(--paper-font-headline); }
+        .contact-subinfo { color: var(--paper-grey-600); margin: 10px 0; }
+        paper-icon-button.contact-icon {
+            --iron-icon-fill-color: white;
+            --iron-icon-stroke-color: var(--paper-grey-600);
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+    </style>
+
+    <template>
+    <paper-card>
+        <div class="contact-content">
+            <div class="card-content">
+                <div class="contact-name">{{name}}</div>
+                <div class="contact-subinfo">{{position}}</div>
+                <div>{{major}}</div>
+            </div>
+            <div class="card-actions">
+                <a href={{github}}>
+                    <paper-button>Github</paper-button>
+                </a>
+                <paper-button>Email</paper-button>
+            </div>
+        </div>
+        <div class="contact-image"></div>
+    </paper-card>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "paper-contact-card",
+
+        properties: {
+            name: {
+                type: String,
+                value: 'Obi-Wan'
+            },
+            position: {
+                type: String,
+                value: 'Jedi Knight'
+            },
+            major: {
+                type: String,
+                value: 'B.S. Force Manipulation'
+            },
+            github: {
+                type: String,
+                value: 'http://www.github.com/ufosc'
+            },
+            email: {
+                type: String,
+                value: 'Gator.osc@gmail.com'
+            }
+        }
+    });
+</script>
