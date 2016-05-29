@@ -3,23 +3,32 @@
 
 <dom-module id="paper-contact-card">
     <style>
-        paper-card { @apply(--layout-horizontal); }
+        paper-card {
+            @apply(--layout-horizontal);
+            width: 350px;
+        }
         .contact-image {
-            width: 135px;
-            height: auto;
-            background: url('../images/download.jpeg');
             background-size: cover;
             /*background-size: contain;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat;*/
             width: 130px;
-            height: auto;*/
+            height: auto;
         }
+        ::content img {
+            max-width: 100px;
+            max-height: 100px;
+          }
         .contact-content {
             @apply(--layout-flex);
             float: left;
         }
-        .contact-name { @apply(--paper-font-headline); }
-        .contact-subinfo { color: var(--paper-grey-600); margin: 10px 0; }
+        .contact-name {
+            @apply(--paper-font-headline);
+        }
+        .contact-subinfo {
+            color: var(--paper-grey-600);
+            margin: 10px 0;
+        }
         paper-icon-button.contact-icon {
             --iron-icon-fill-color: white;
             --iron-icon-stroke-color: var(--paper-grey-600);
@@ -28,26 +37,28 @@
             color: black;
             text-decoration: none;
         }
-
     </style>
 
     <template>
-    <paper-card>
-        <div class="contact-content">
-            <div class="card-content">
-                <div class="contact-name">{{name}}</div>
-                <div class="contact-subinfo">{{position}}</div>
-                <div>{{major}}</div>
+        <paper-card>
+            <div class="contact-content">
+                <div class="card-content">
+                    <div class="contact-name">{{name}}</div>
+                    <div class="contact-subinfo">{{position}}</div>
+                    <div>{{major}}</div>
+                </div>
+                <div class="card-actions">
+                    <a href={{github}}>
+                        <paper-button>Github</paper-button>
+                    </a>
+                    <paper-button>Email</paper-button>
+                </div>
             </div>
-            <div class="card-actions">
-                <a href={{github}}>
-                    <paper-button>Github</paper-button>
-                </a>
-                <paper-button>Email</paper-button>
-            </div>
-        </div>
-        <div class="contact-image"></div>
-    </paper-card>
+            <!-- Add the background image in the main file -->
+            <!-- <div class="contact-image" style="background-image:url(../images/download.jpeg)">{{image}}</div> -->
+            <!-- <div class="contact-image"> </div> -->
+            <!-- <div class="contact-image" style={{image}}>{{image}}</div> -->
+        </paper-card>
     </template>
 </dom-module>
 
@@ -75,7 +86,25 @@
             email: {
                 type: String,
                 value: 'Gator.osc@gmail.com'
+            },
+            portrait: {
+                type: String,
+                value: '../images/download.jpeg'
+            },
+            image: {
+                type: Object,
+                computed: 'computeImagePath(portrait)'
             }
+        },
+        ready: function() {
+            this.super();
+        },
+        getImage: function(idx) {
+            return this.querySelectorAll("img")[idx];
+        },
+        // Add style info
+        computeImagePath: function(portrait){
+            return 'background-image:url(' + portrait + ')';
         }
     });
 </script>

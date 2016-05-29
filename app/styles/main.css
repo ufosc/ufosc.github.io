@@ -6,13 +6,5 @@ body {
 
 .content {
     float: center;
-    max-width: 33%;
     margin: 10px 30px 30px;
 }
-
-/*.center {
-    margin: auto;
-    width: 10%;
-    padding: 10px;
-    margin: 10px 30px 30px;
-}*/
