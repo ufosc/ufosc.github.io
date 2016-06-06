@@ -7,17 +7,11 @@
             @apply(--layout-horizontal);
             width: 350px;
         }
-        .contact-image {
-            background-size: cover;
-            /*background-size: contain;
-            background-repeat: no-repeat;*/
-            width: 130px;
-            height: auto;
-        }
         ::content img {
-            max-width: 100px;
-            max-height: 100px;
-          }
+            max-width: 131px;
+            max-height: 123px;
+            background-size: cover;
+        }
         .contact-content {
             @apply(--layout-flex);
             float: left;
@@ -51,9 +45,17 @@
                     <a href={{github}}>
                         <paper-button>Github</paper-button>
                     </a>
-                    <paper-button>Email</paper-button>
+                    <a href=mailto:{{email}}>
+                        <paper-button>Email</paper-button>
+                    </a>
+                    <paper-icon-button icon="hardware:keyboard-arrow-up" title="more info" onclick="_toggle()" style="float:right;">
+                    </paper-icon-button>
+                    <iron-collapse id="more-info" style="width:100%;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante,
+                    </iron-collapse>
                 </div>
             </div>
+            <content></content>
             <!-- Add the background image in the main file -->
             <!-- <div class="contact-image" style="background-image:url(../images/download.jpeg)">{{image}}</div> -->
             <!-- <div class="contact-image"> </div> -->
@@ -86,25 +88,35 @@
             email: {
                 type: String,
                 value: 'Gator.osc@gmail.com'
-            },
-            portrait: {
-                type: String,
-                value: '../images/download.jpeg'
-            },
-            image: {
-                type: Object,
-                computed: 'computeImagePath(portrait)'
             }
+            // portrait: {
+            //     type: String,
+            //     value: '../images/download.jpeg'
+            //  }
+            // image: {
+            //     type: Object,
+            //     computed: 'computeImagePath(portrait)'
+            // }
         },
-        ready: function() {
-            this.super();
-        },
-        getImage: function(idx) {
+        // ready: function() {
+        //     this.super();
+        // },
+        getimage: function(idx) {
             return this.querySelectorAll("img")[idx];
         },
-        // Add style info
-        computeImagePath: function(portrait){
-            return 'background-image:url(' + portrait + ')';
+        function _toggle() {
+            var moreInfo = document.getElementById('more-info');
+            var iconButton = Polymer.dom(event).localTarget;
+            iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-up'
+                                          : 'hardware:keyboard-arrow-down';
+            moreInfo.toggle();
         }
+        // getImage: function(idx) {
+        //     return this.querySelectorAll("img")[idx];
+        // },
+        // // Add style info
+        // computeImagePath: function(portrait){
+        //     return 'background-image:url(' + portrait + ')';
+        // }
     });
 </script>

@@ -1,0 +1,25 @@
+<link rel="import" href="bower_compnents/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+
+<dom-module id="paper-contact-card-test">
+  <polymer-element name="paper-contact-card-test">
+    <template>
+      <style>
+        img {
+          width: 10px;
+          height: 10px;
+        }
+      </style>
+      <content></content>
+    </template>
+    <script>
+      new Polymer("paper-contact-card-test", {
+        ready: function() {
+          this.super();
+        },
+        getimage: function(idx) {
+          return this.querySelectorAll("img")[idx];
+        }
+      });
+    </script>
+  </polymer-element>
