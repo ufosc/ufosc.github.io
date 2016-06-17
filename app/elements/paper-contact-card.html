@@ -78,46 +78,47 @@ TODO: 1. Add a drop down for more information, favorite qoute, etc.
         </paper-card>
 
     </template>
-</dom-module>
 
-<script>
-    Polymer({
-        is: "paper-contact-card",
-
-        // Default values for the element
-        properties: {
-            name: {
-                type: String,
-                value: 'Obi-Wan'
+    <script>
+        Polymer({
+            is: "paper-contact-card",
+//
+            // Default values for the element
+            properties: {
+                name: {
+                    type: String,
+                    value: 'Obi-Wan'
+                },
+                position: {
+                    type: String,
+                    value: 'Jedi Knight'
+                },
+                major: {
+                    type: String,
+                    value: 'B.S. Force Manipulation'
+                },
+                github: {
+                    type: String,
+                    value: 'http://www.github.com/ufosc'
+                },
+                email: {
+                    type: String,
+                    value: 'Gator.osc@gmail.com'
+                }
             },
-            position: {
-                type: String,
-                value: 'Jedi Knight'
-            },
-            major: {
-                type: String,
-                value: 'B.S. Force Manipulation'
-            },
-            github: {
-                type: String,
-                value: 'http://www.github.com/ufosc'
-            },
-            email: {
-                type: String,
-                value: 'Gator.osc@gmail.com'
+            // For passing the image http://jsbin.com/rijezabapuwe/1/edit?html,output
+            getimage: function(idx) {
+                return this.querySelectorAll("img")[idx];
             }
-        },
-        // For passing the image http://jsbin.com/rijezabapuwe/1/edit?html,output
-        getimage: function(idx) {
-            return this.querySelectorAll("img")[idx];
-        }
-        // Work in progress
-        // function _toggle() {
-        //     var moreInfo = document.getElementById('more-info');
-        //     var iconButton = Polymer.dom(event).localTarget;
-        //     iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-up'
-        //                                   : 'hardware:keyboard-arrow-down';
-        //     moreInfo.toggle();
-        // }
-    });
-</script>
+            // Work in progress
+            // function _toggle() {
+            //     var moreInfo = document.getElementById('more-info');
+            //     var iconButton = Polymer.dom(event).localTarget;
+            //     iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-up'
+            //                                   : 'hardware:keyboard-arrow-down';
+            //     moreInfo.toggle();
+            // }
+        });
+    </script>
+
+</dom-module>
