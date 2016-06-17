@@ -1,45 +1,53 @@
+<!--
+This is the contact card for the members page. It can take in: name, position,
+major, github, and email. An image can also be placed within the elemnt as well.
+-->
+
 <link rel="import" href="bower_compnents/polymer/polymer.html">
 <link rel="import" href="bower_components/paper-card/paper-card.html">
 
-<dom-module id="paper-contact-card">
-    <style>
-        paper-card {
-            @apply(--layout-horizontal);
-            width: 350px;
-        }
-        .contact-image {
-            background-size: cover;
-            /*background-size: contain;
-            background-repeat: no-repeat;*/
-            width: 130px;
-            height: auto;
-        }
-        ::content img {
-            max-width: 100px;
-            max-height: 100px;
-          }
-        .contact-content {
-            @apply(--layout-flex);
-            float: left;
-        }
-        .contact-name {
-            @apply(--paper-font-headline);
-        }
-        .contact-subinfo {
-            color: var(--paper-grey-600);
-            margin: 10px 0;
-        }
-        paper-icon-button.contact-icon {
-            --iron-icon-fill-color: white;
-            --iron-icon-stroke-color: var(--paper-grey-600);
-        }
-        a {
-            color: black;
-            text-decoration: none;
-        }
-    </style>
+<!--
+TODO: 1. Add a drop down for more information, favorite qoute, etc.
+      2. More properly implment the image being passed in
+      3. Add option to disable github or email
+      4. Default image, probably OSC logo
+-->
 
+<dom-module id="paper-contact-card">
     <template>
+
+        <style>
+            paper-card {
+                @apply(--layout-horizontal);
+                width: 350px;
+            }
+            ::content img {
+                max-width: 131px;
+                max-height: 121px;
+                background-size: cover;
+            }
+            .contact-content {
+                @apply(--layout-flex);
+                float: left;
+            }
+            .contact-name {
+                @apply(--paper-font-headline);
+            }
+            .contact-subinfo {
+                color: var(--paper-grey-600);
+                margin: 10px 0;
+            }
+            paper-icon-button.contact-icon {
+                --iron-icon-fill-color: white;
+                --iron-icon-stroke-color: var(--paper-grey-600);
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        </style>
+
+        <!-- Based of the paper-card class -->
         <paper-card>
             <div class="contact-content">
                 <div class="card-content">
@@ -51,60 +59,66 @@
                     <a href={{github}}>
                         <paper-button>Github</paper-button>
                     </a>
-                    <paper-button>Email</paper-button>
+                    <a href=mailto:{{email}}>
+                        <paper-button>Email</paper-button>
+                    </a>
+                    <!-- Work in progress -->
+                    <!-- <paper-icon-button icon="hardware:keyboard-arrow-up"
+                            title="more info" onclick="_toggle()"
+                            style="float:right;">
+                    </paper-icon-button>
+                    <iron-collapse id="more-info" style="width:100%;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Praesent enim ante,
+                    </iron-collapse> -->
                 </div>
             </div>
-            <!-- Add the background image in the main file -->
-            <!-- <div class="contact-image" style="background-image:url(../images/download.jpeg)">{{image}}</div> -->
-            <!-- <div class="contact-image"> </div> -->
-            <!-- <div class="contact-image" style={{image}}>{{image}}</div> -->
+            <!-- Where the image goes into -->
+            <content></content>
         </paper-card>
+
     </template>
-</dom-module>
 
-<script>
-    Polymer({
-        is: "paper-contact-card",
-
-        properties: {
-            name: {
-                type: String,
-                value: 'Obi-Wan'
+    <script>
+        Polymer({
+            is: "paper-contact-card",
+//
+            // Default values for the element
+            properties: {
+                name: {
+                    type: String,
+                    value: 'Obi-Wan'
+                },
+                position: {
+                    type: String,
+                    value: 'Jedi Knight'
+                },
+                major: {
+                    type: String,
+                    value: 'B.S. Force Manipulation'
+                },
+                github: {
+                    type: String,
+                    value: 'http://www.github.com/ufosc'
+                },
+                email: {
+                    type: String,
+                    value: 'Gator.osc@gmail.com'
+                }
             },
-            position: {
-                type: String,
-                value: 'Jedi Knight'
-            },
-            major: {
-                type: String,
-                value: 'B.S. Force Manipulation'
-            },
-            github: {
-                type: String,
-                value: 'http://www.github.com/ufosc'
-            },
-            email: {
-                type: String,
-                value: 'Gator.osc@gmail.com'
-            },
-            portrait: {
-                type: String,
-                value: '../images/download.jpeg'
-            },
-            image: {
-                type: Object,
-                computed: 'computeImagePath(portrait)'
+            // For passing the image http://jsbin.com/rijezabapuwe/1/edit?html,output
+            getimage: function(idx) {
+                return this.querySelectorAll("img")[idx];
             }
-        },
-        ready: function() {
-            this.super();
-        },
-        getImage: function(idx) {
-            return this.querySelectorAll("img")[idx];
-        },
-        // Add style info
-        computeImagePath: function(portrait){
-            return 'background-image:url(' + portrait + ')';
-        }
-    });
-</script>
+            // Work in progress
+            // function _toggle() {
+            //     var moreInfo = document.getElementById('more-info');
+            //     var iconButton = Polymer.dom(event).localTarget;
+            //     iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-up'
+            //                                   : 'hardware:keyboard-arrow-down';
+            //     moreInfo.toggle();
+            // }
+        });
+    </script>
+
+</dom-module>
