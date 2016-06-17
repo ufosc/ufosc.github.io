@@ -8,3 +8,9 @@ body {
     float: center;
     margin: 10px 30px 30px;
 }
+
+.content-image {
+    width: 100px;
+    height: 170px;
+    background-size: cover;
+}
