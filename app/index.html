@@ -15,14 +15,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>UF Open Source Club</title>
 
-        <!-- Styling information -->
-        <link rel="stylesheet" href="styles/main.css">
-
         <!-- This is the only html import, this is to avoid importing polymer multiple times -->
         <link rel="import" href="elements/elements.html">
 
-        <!-- Default Bower Stuff -->
-        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <!-- Styling information -->
+        <link rel="stylesheet" href="styles/main.css">
+        <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+
+        <!-- Import webcomponents information -->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
     </head>
     <body unresolved>
@@ -85,7 +86,6 @@
                     <paper-toolbar id="mainToolbar" class="tall">
                         <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
 
-
                         <!-- Site Name name -->
                         <div class="middle middle-container">
                             <div class="app-name">Open Source Club</div>
@@ -98,9 +98,10 @@
                     </paper-toolbar>
 
                     <!-- Main Content -->
-                    <div class="content">
+                    <div class="content content-box horizontal layout wrap">
+
                         <h1>Stuff goes here!</h1>
-                        <paper-card heading="About">
+                        <paper-card class="main-content" heading="About">
                             <div class="card-content">
                                 The Open Source Club (OSC) is a University of
                                 Florida Club with the goals to Promote, Support,
@@ -108,12 +109,72 @@
                                 in the Spring of 2016.
                             </div>
                         </paper-card>
-                        <paper-contact-card name="Matthew Booe" position="President/Founder"
-                                major="Computer Engineering" github="https://github.com/Mirdaki"
+
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                        </paper-contact-card>
+
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
                                 email="nerdboy@ufl.edu">
                             <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
                             <!-- <img src="images/download.jpeg">  -->
                         </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+                        <paper-contact-card class="main-content" name="Matthew Booe"
+                                position="President/Founder"
+                                major="Computer Engineering"
+                                github="https://github.com/Mirdaki"
+                                email="nerdboy@ufl.edu">
+                            <img src="images/11053405_494927244000759_48202272623329542_n.jpg">
+                            <!-- <img src="images/download.jpeg">  -->
+                        </paper-contact-card>
+
                     </div>
 
                 </paper-scroll-header-panel>
