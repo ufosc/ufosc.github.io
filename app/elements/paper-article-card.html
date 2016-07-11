@@ -43,7 +43,7 @@ TODO: 1. Add an optional animation for opening articles
                 color: var(--paper-grey-600);
                 margin: 10px 0;
             }
-            .card-content {
+            .card-height {
                 height: 100px;
             }
             a {
@@ -55,18 +55,15 @@ TODO: 1. Add an optional animation for opening articles
                 float: right;
                 margin-bottom: 5px;
             }
-            paper-dialog {
-                width: 100%;
-                height: 300px;
-                @apply(--layout-vertical);
-            }
-            paper-dialog paper-dialog-scrollable {
-                @apply(--layout-flex);
+            paper-dialog[less-wide-layout] {
+                color: green;
+                /*margin-left: 525px;*/
             }
         </style>
 
         <!-- Resizing properties -->
         <iron-media-query query="(min-width: 800px)" query-matches="{{wide}}"></iron-media-query>
+        <iron-media-query query="(min-width: 600px)" query-matches="{{lessWide}}"></iron-media-query>
 
         <!-- Based of the paper-card class -->
         <paper-card>
@@ -80,7 +77,7 @@ TODO: 1. Add an optional animation for opening articles
 
             <!-- Main content -->
             <div class="article-content">
-                <div class="card-content">
+                <div class="card-content card-height">
                     <div class="article-name">{{title}}</div>
                     <div class="article-subinfo">{{date}}</div>
                     <div id="theShortendText"></div>
@@ -98,23 +95,19 @@ TODO: 1. Add an optional animation for opening articles
         <!-- <link rel="import" href="components/neon-animation/animations/scale-up-animation.html">
         <link rel="import" href="components/neon-animation/animations/fade-out-animation.html"> -->
 
-        <paper-dialog id="dialog">
-            <div class="card-content">
-                <div class="article-name">{{title}}</div>
-                <div class="article-subinfo">{{date}}</div>
-                <paper-dialog-scrollable>
-                    <div>{{text}}</div>
-                </paper-dialog-scrollable>
-            </div>
+        <paper-dialog id="dialog" less-wide-layout$="{{lessWide}}">
+            <div class="article-name">{{title}}</div>
+            <div class="article-subinfo">{{date}}</div>
+            <paper-dialog-scrollable>
+                <div>{{text}}</div>
+            </paper-dialog-scrollable>
             <div class="buttons">
-              <paper-button dialog-dismiss>Close</paper-button>
-              <a href={{link}}>
-                  <paper-button>Go to</paper-button>
-              </a>
+                <paper-button dialog-dismiss>Close</paper-button>
+                <a href={{link}}>
+                    <paper-button>Go to</paper-button>
+                </a>
             </div>
         </paper-dialog>
-
-
     </template>
 
     <script>
@@ -486,11 +479,10 @@ TODO: 1. Add an optional animation for opening articles
                 } else {
                     textLength = 50;
                 }
-                console.log("Text length is: " + textLength);
+                // console.log("Text length is: " + textLength);
                 if (str.length > textLength) {
                     str = str.substring(0, textLength) + '...';
                 }
-                console.log("Text is: " + str);
                 this.$.theShortendText.innerHTML = str;
             }
             // media query event handler
