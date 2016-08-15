@@ -4,6 +4,16 @@ It can take in: title, content, and date. An image can also be placed within the
 element as well.
 -->
 
+<!--
+Example:
+
+<paper-article-card class="main-content" title="Example"
+    date="8/13/16" text="Matthew is making an example!"
+    link="http://www.google.com">
+    <img src="images/openSourceLogo.svg">
+</paper-article-card>
+ -->
+
 <link rel="import" href="../bower_compnents/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
@@ -16,6 +26,8 @@ TODO: 1. Add an optional animation for opening articles
       2. More properly implment the image being passed in
       3. Default image, probably OSC logo
       4. May need to resize images for different sized screens
+      5. Move expanded text to the righ of the menu bar
+      6. Add picture to full view
 -->
 
 <dom-module id="paper-article-card">
@@ -56,7 +68,7 @@ TODO: 1. Add an optional animation for opening articles
                 margin-bottom: 5px;
             }
             paper-dialog[less-wide-layout] {
-                /*color: green;*/
+                /*Trying to move it to the left of the menu bar*/
                 /*margin-left: 525px;*/
             }
         </style>
@@ -67,13 +79,24 @@ TODO: 1. Add an optional animation for opening articles
 
         <!-- Based of the paper-card class -->
         <paper-card>
+
             <!-- Where the image goes into -->
             <!-- Hides if page not big enough -->
             <template is="dom-if" if="{{wide}}">
-                <a href={{link}}>
+
+                <!-- When link is provided, link to it -->
+                <template is="dom-if" if="{{_isLinkThere(link)}}">
+                    <a href={{link}}>
+                        <content></content>
+                    </a>
+                </template>
+
+                <!-- When link is not provided, don't link to anything -->
+                <template is="dom-if" if="{{!_isLinkThere(link)}}">
                     <content></content>
-                </a>
+                </template>
             </template>
+
 
             <!-- Main content -->
             <div class="article-content">
@@ -83,10 +106,19 @@ TODO: 1. Add an optional animation for opening articles
                     <div id="theShortendText"></div>
                 </div>
                 <div class="card-actions">
+
+                    <!-- When link is provided, link to it -->
+                    <template is="dom-if" if="{{!_isTextShortened(text)}}">
                         <paper-button on-tap="toggleDialog">Read More</paper-button>
-                    <a href={{link}}>
-                        <paper-button>Go to</paper-button>
-                    </a>
+                    </template>
+
+                    <!-- When link is provided, link to it -->
+                    <template is="dom-if" if="{{_isLinkThere(link)}}">
+                        <a href={{link}}>
+                            <paper-button>Go to</paper-button>
+                        </a>
+                    </template>
+
                 </div>
             </div>
         </paper-card>
@@ -99,13 +131,20 @@ TODO: 1. Add an optional animation for opening articles
             <div class="article-name">{{title}}</div>
             <div class="article-subinfo">{{date}}</div>
             <paper-dialog-scrollable>
+                <!-- Add the article picture -->
+                <!-- <content></content> -->
                 <div>{{text}}</div>
             </paper-dialog-scrollable>
             <div class="buttons">
                 <paper-button dialog-dismiss>Close</paper-button>
-                <a href={{link}}>
-                    <paper-button>Go to</paper-button>
-                </a>
+
+                <!-- When link is provided, link to it -->
+                <template is="dom-if" if="{{_isLinkThere(link)}}">
+                    <a href={{link}}>
+                        <paper-button>Go to</paper-button>
+                    </a>
+                </template>
+
             </div>
         </paper-dialog>
     </template>
@@ -131,311 +170,11 @@ TODO: 1. Add an optional animation for opening articles
                 },
                 link: {
                     type: String,
-                    // value: "https://www.gnu.org/software/"
+                    value: ""
                 },
                 text: {
                     type: String,
                     value: 'GNU stands for "GNU is Not Unix". This is because GNU '
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
-                    + 'is not Unix. It is the most logical choice for naming something '
-                    + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
-                    + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
-                    + 'This might be confusing, because Unix does not stand for "Unix '
-                    + 'is not GNU." This is an understandable misconception, because '
-                    + 'as you know, Unix is not GNU.'
                     + 'is not Unix. It is the most logical choice for naming something '
                     + 'that is not Unix. Why you ask? Because it\'s not Unix. What is '
                     + 'Unix then you ask? Aww well, it\'s simple. Unix is not GNU. '
@@ -469,22 +208,45 @@ TODO: 1. Add an optional animation for opening articles
                         || document.body.clientWidth;
 
                 if (width > 1128) {
-                    textLength = 250;
+                    textLength = 240;
                 } else if (width > 1010) {
-                    textLength = 200;
+                    textLength = 170;
                 } else if (width > 908) {
-                    textLength = 150;
+                    textLength = 120;
                 } else if (width > 400) {
-                    textLength = 100;
+                    textLength = 80;
                 } else {
-                    textLength = 50;
+                    textLength = 40;
                 }
                 // console.log("Text length is: " + textLength);
                 if (str.length > textLength) {
                     str = str.substring(0, textLength) + '...';
                 }
                 this.$.theShortendText.innerHTML = str;
+            },
+            // Is the link provided, if not don't show link
+            _isLinkThere : function(link) {
+                if (link=="")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            },
+            // Is the text shortened
+            _isTextShortened : function(text) {
+                if (text.length >= 240)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
+
             // media query event handler
             // if (matchMedia) {
             //   var mq = window.matchMedia("(min-width: 800px)");
