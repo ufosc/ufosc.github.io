@@ -78,7 +78,7 @@
                 <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
 
                     <!-- Main Toolbar -->
-                    <paper-toolbar id="mainToolbar" class="tall">
+                    <paper-toolbar  id="mainToolbar" class="tall main-header">
                         <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
 
                         <!-- Site Name name -->
@@ -95,11 +95,28 @@
                     <!-- Main Content -->
                     <div class="horizontal layout wrap">
 
+                        <!-- The regular schedule for meetings -->
                         <paper-card class="main-content" heading="Events">
                             <div class="card-content">
-                                Content
-                            </div>
+                                <strong>General Body Meetings: </strong>Every other Thursday, 6:00pm - 7:00pm, NSC 227 <br/>
+                                <strong>Coding Session: </strong>Every other TBA, 6:00pm - 7:00pm, NSC 227 <br/>
+                                <strong>Casual Coding: </strong>Saturdays, 12:00pm - 3:00pm, Marston Library <br/>
+                                <br/>
+                                Check out or add our <a href="https://calendar.google.com/calendar/embed?src=toln76hk72u3v4vhu4hblu8s88%40group.calendar.google.com&ctz=America/New_York">
+                                    Google Calendar</a> for the most up-to-date information.</div>
                         </paper-card>
+
+                        <!-- List of events, going down in a newest to oldest order -->
+
+                        <!-- Up coming Events  -->
+                        <paper-article-card class="main-content" title="First General Body Meeting"
+                            date="9/1/16" text="We are going to introduce what the club is as
+                                    well as go over different project possibilities for the semester"
+                            link="http://campusmap.ufl.edu/#/index/0634">
+                            <img src="images/dates/01.svg">
+                        </paper-article-card>
+
+                        <!-- Old Events -->
 
                     </div>
 
