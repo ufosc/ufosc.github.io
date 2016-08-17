@@ -1,0 +1,24 @@
+body {
+    background: #fafafa;
+    font-family: 'Roboto', 'Helvetica Neue', monospace;
+    color: #333333;
+}
+
+.main-content {
+    float: center;
+    margin: 10px 30px 30px;
+    width: 95%;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 90%;
+    max-height: 300px;
+}
+
+.logo-caption {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
