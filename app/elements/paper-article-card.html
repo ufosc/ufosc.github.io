@@ -1,6 +1,6 @@
 <!--
 This is the article card for projects, tutorials, and other informationl text.
-It can take in: title, content, and date. An image can also be placed within the
+It can take in: title, content, and timeplace. An image can also be placed within the
 element as well.
 -->
 
@@ -8,7 +8,7 @@ element as well.
 Example:
 
 <paper-article-card class="main-content" title="Example"
-    date="8/13/16" text="Matthew is making an example!"
+    timeplace="8/13/16" text="This is an example!"
     link="http://www.google.com">
     <img src="images/openSourceLogo.svg">
 </paper-article-card>
@@ -28,6 +28,7 @@ TODO: 1. Add an optional animation for opening articles
       4. May need to resize images for different sized screens
       5. Move expanded text to the righ of the menu bar
       6. Add picture to full view
+      7. Better resizing behavior
 -->
 
 <dom-module id="paper-article-card">
@@ -103,13 +104,13 @@ TODO: 1. Add an optional animation for opening articles
             <div class="article-content">
                 <div class="card-content card-height">
                     <div class="article-name">{{title}}</div>
-                    <div class="article-subinfo">{{date}}</div>
+                    <div class="article-subinfo">{{timeplace}}</div>
                     <div id="theShortendText"></div>
                 </div>
                 <div class="card-actions">
 
                     <!-- When link is provided, link to it -->
-                    <template is="dom-if" if="{{!_isTextShortened(text)}}">
+                    <template is="dom-if" if="{{_isTextShortened(text)}}">
                         <paper-button on-tap="toggleDialog">Read More</paper-button>
                     </template>
 
@@ -130,7 +131,7 @@ TODO: 1. Add an optional animation for opening articles
 
         <paper-dialog id="dialog" less-wide-layout$="{{lessWide}}">
             <div class="article-name">{{title}}</div>
-            <div class="article-subinfo">{{date}}</div>
+            <div class="article-subinfo">{{timeplace}}</div>
             <paper-dialog-scrollable>
                 <!-- Add the article picture -->
                 <!-- <content></content> -->
@@ -165,9 +166,9 @@ TODO: 1. Add an optional animation for opening articles
                     type: String,
                     value: 'GNU'
                 },
-                date: {
+                timeplace: {
                     type: String,
-                    // value: '01/01/1970'
+                    // value: '01/01/1970, Gainesville'
                 },
                 link: {
                     type: String,
@@ -237,14 +238,32 @@ TODO: 1. Add an optional animation for opening articles
                 }
             },
             // Is the text shortened
-            _isTextShortened : function(text) {
-                if (text.length >= 240)
+            _isTextShortened : function() {
+                console.log("First length" + this.text.length);
+                var textLength;
+                var width = window.innerWidth
+                        || document.documentElement.clientWidth
+                        || document.body.clientWidth;
+
+                if (width > 1128) {
+                    textLength = 240;
+                } else if (width > 1010) {
+                    textLength = 170;
+                } else if (width > 908) {
+                    textLength = 120;
+                } else if (width > 400) {
+                    textLength = 80;
+                } else {
+                    textLength = 40;
+                }
+                // console.log("Text length is: " + textLength);
+                if (this.text.length > textLength)
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
 
