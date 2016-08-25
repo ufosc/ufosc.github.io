@@ -4,6 +4,14 @@ body {
     color: #333333;
 }
 
+.middle-container {
+    /*color: #7ff402;*/
+}
+
+.bottom-container {
+    /*color: #7ff402;*/
+}
+
 .main-content {
     float: center;
     margin: 10px 30px 30px;
