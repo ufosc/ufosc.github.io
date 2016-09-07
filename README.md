@@ -1,6 +1,6 @@
 # Website
 
-This is the code for the official club website.
+This is the code for the [official club website](https://ufosc.github.io/).
 
 ## Note
 
