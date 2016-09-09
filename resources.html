@@ -72,11 +72,13 @@
                 </paper-scroll-header-panel>
 
                 <!-- Main Screen -->
-                <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+                <paper-scroll-header-panel main id="headerPanelMain" condenses
+						keep-condensed-header>
 
                     <!-- Main Toolbar -->
                     <paper-toolbar id="mainToolbar" class="tall">
-                        <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+                        <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle>
+								</paper-icon-button>
 
                         <!-- Site Name name -->
                         <div class="middle middle-container">
@@ -112,9 +114,29 @@
                         </paper-article-card>
                         -->
 
+						<paper-article-card class="main-content" title="General Style Guidelines"
+                            text="The General Style Guidelines are a set of recommendations for
+									 styling your code. It is designed to maximise the readability
+									 of your code. Club code should reflect these guidelines."
+                            link="https://github.com/UFOSC/coding-guidelines/blob/master/
+									general-style-guidelines.md">
+                            <img src="images/openSourceLogo.svg">
+                        </paper-article-card>
+
+						<paper-article-card class="main-content" title="Golden Rules"
+                            text="The Golden Rules is a list of suggestions for writing better,
+									 more modular, and readable code. It is recomended all members
+									 look through them."
+                            link="https://github.com/UFOSC/coding-guidelines/blob/master/
+									golden-rules.md">
+                            <img src="images/openSourceLogo.svg">
+                        </paper-article-card>
+
                         <paper-article-card class="main-content" title="Git"
                             text="Git is an open source version control system.
-                                    It helps maintain code collaboratively."
+                                     It helps maintain code collaboratively. This guide explains
+									 getting started with git, as well as some more advanced
+									 features."
                             link="https://github.com/UFOSC/tutorials/tree/master/git">
                             <img src="images/resources/gitLogo.png">
                         </paper-article-card>
