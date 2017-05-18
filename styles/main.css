@@ -19,10 +19,7 @@ body {
 }
 
 .logo {
-    display: block;
     margin: auto;
-    width: 90%;
-    max-height: 300px;
 }
 
 .logo-caption {
