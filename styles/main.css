@@ -15,7 +15,7 @@ body {
 .main-content {
     float: center;
     margin: 10px 30px 30px;
-    /*width: 95%;*/
+    width: 95%;
 }
 
 .logo {
