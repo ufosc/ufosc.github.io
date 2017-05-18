@@ -20,6 +20,7 @@ body {
 
 .logo {
     margin: auto;
+    display: block;
 }
 
 .logo-caption {
