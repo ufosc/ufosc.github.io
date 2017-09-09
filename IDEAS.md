@@ -16,10 +16,13 @@ Add any ideas you think would be cool to have in the website. Look through some 
 		- Slack
 		- GitHub
 - Events
-	- Pull from Facebook and Google Calender
+	- Pull from Facebook and Google Calendar
 - Projects
 	- List of active projects, how to get started
 	- Could pull from GitHub
+		- And/or provide a public-friendly version of the projects
+			- A simple introduction/summary of each project
+			- Download link for those who would like to use the product
 - Resources 
 	- Good stuff to know
 - List of other cool open source projects 
@@ -44,3 +47,5 @@ Add any ideas you think would be cool to have in the website. Look through some 
 - Git Resources
 	- [Cool interactive tutorial](https://www.codeschool.com/courses/try-git)
 	- [Our Git Resources](https://github.com/ufosc/resources/tree/master/resources/git)
+- General Web Development Resources
+	- [Free Code Camp](https://www.freecodecamp.org/)
