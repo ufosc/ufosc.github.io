@@ -1,5 +1,5 @@
 {
-  "name": "Open Source Club Website",
+  "name": "uf-osc",
   "homepage": "https://github.com/UFOSC/Website",
   "authors": [
     "Nerdboy314 <mdbooe@gmail.com>"
@@ -40,6 +40,10 @@
     "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
     "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^1.1.4",
     "iron-media-query": "PolymerElements/iron-media-query#^1.0.8",
-    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.3"
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.3",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.0.0"
+  },
+  "resolutions": {
+    "iron-ajax": "^1.0.0"
   }
 }

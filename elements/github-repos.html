@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id='github-repos'>
+
+  <template>
+
+    <style>
+    :host {
+      display: inline-block;
+    }
+    .full-width {
+      float: left;
+      width: calc(100% - 60px);
+      margin: 15px 30px;
+    }
+    </style>
+
+      <iron-ajax id='testAjax'
+        url="https://api.github.com/users/{{user}}/repos"
+        method='GET'
+        last-response="{{data}}" auto></iron-ajax>
+
+        <template is='dom-repeat' items='{{data}}'>
+          <paper-card class='full-width' heading="{{item.name}}">
+            <div class='card-content'>{{item.description}}</div>
+            <div class='card-actions'>
+              <paper-button>View Source</paper-button>
+              <paper-button>Download</paper-button>
+            </div>
+          </paper-card>
+        </template>
+
+  </template>
+
+  <script>
+  console.log("ran");
+  Polymer({
+    is: 'github-repos',
+    properties: {
+      user: String
+    },
+  });
+  </script>
+</dom-module>
