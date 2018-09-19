@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <!-- Regular meta information -->
+        <meta charset="utf-8">
+        <meta name="description" content="UF Open Source Website">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>UF Open Source Club</title>
+
+        <!-- This is the only html import, this is to avoid importing polymer multiple times -->
+        <link rel="import" href="elements/elements.html">
+
+        <!-- Styling information -->
+        <link rel="stylesheet" href="styles/main.css">
+        <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+
+        <!-- Favicon -->
+        <link rel="icon" href="images/openSourceLogo.ico">
+
+        <!-- Import webcomponents information -->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    </head>
+
+<h1 id="iusearchbtw">i use arch btw</h1>
+
+<h1 id="anopensourceclubcodejam"><em>an Open Source Club Codejam</em></h1>
+
+<p>Are you interested in Linux, but too afraid to install it yourself?
+Have you heard pretentious people on the internet bragging about using Arch Linux?</p>
+
+<p>Well we have the perfect opportunity for you! At our first Codejam of the month, we will be walking people through a complete install of Arch Linux: from partitioning drives to picking the most <strong><em>A E S T H E T I C</em></strong> color palettes.</p>
+
+<h2 id="wherewhen">Where / When:</h2>
+
+<li>Reitz Union 2340</li>
+
+<li>Saturday, September 22</li>
+
+<li>10:00AM to 4:00PM </li>
+<em>(COME WHENEVER, YOU ARE NOT REQUIRED TO BE THERE AT 10:00AM!)</em>
+
+
+<h2 id="whattobring">What to bring:</h2>
+
+<li>A laptop of some kind (Required)</li>
+
+<li>Flash drive (Optional)</li>
+
+<li>(That's it)</li>
+
+
+<h2>Installation options:</h2>
+
+<li>Installing on a Virtual Machine</li>
+
+<li>Installing on an old Laptop (completely wipe your old OS)</li>
+
+<li>Dual booting (not recommended)</li>
+
+
+<p>If you choose the Virtual Machine route, please install Oracle <a href="https://www.virtualbox.org/">Virtualbox</a>  before the event to save time.</p>
