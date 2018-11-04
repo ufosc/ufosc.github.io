@@ -3,144 +3,29 @@
 <html lang="en">
 
     <head>
-        <!-- Regular meta information -->
+        <!-- Meta information -->
         <meta charset="utf-8">
-        <meta name="description" content="UF Open Source Website">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
         <title>UF Open Source Club</title>
-
-        <!-- This is the only html import, this is to avoid importing polymer multiple times -->
-        <link rel="import" href="elements/elements.html">
-
-        <!-- Styling information -->
-        <link rel="stylesheet" href="styles/main.css">
-        <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+        <meta name="description" content="The Open Source Club at the University of Florida is an official student organization dedicated to working on open source projects.">
 
         <!-- Favicon -->
-        <link rel="icon" href="images/openSourceLogo.ico">
-
-        <!-- Import webcomponents information -->
-        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-
+        <link rel="icon" type="image/png" href="favicon.png">
     </head>
-    <body unresolved>
-        <template is="dom-bind" id="app">
+    <body >
 
-            <!-- Side/Menu Pannel -->
-            <paper-drawer-panel id="paperDrawerPanel">
+        <h1>Redirecting...</h1>
+        <p>
+            If you are not redirected right away, click <a href="https://ufopensource.club">here</a>
+        </p>
 
-                <!-- Drawer Scroll Header Panel -->
-                <paper-scroll-header-panel drawer fixed>
-
-                    <!-- Drawer Toolbar -->
-                    <paper-toolbar id="drawerToolbar">
-                        <span class="menu-name">Menu</span>
-                    </paper-toolbar>
-
-                    <!-- Drawer Content -->
-                    <paper-menu>
-                        <a href="https://github.com/ufosc">
-                            <iron-icon icon="icons:code"></iron-icon>
-                            <span>Our Projects</span>
-                        </a>
-
-                        <a href="https://www.facebook.com/groups/ufosc/events/">
-                            <iron-icon icon="icons:event"></iron-icon>
-                            <span>Events</span>
-                        </a>
-
-                        <a href="https://github.com/ufosc/club-documents/blob/master/Open-Source-Projects.md">
-                            <iron-icon icon="hardware:device-hub"></iron-icon>
-                            <span>Cool FLOSS Projects</span>
-                        </a>
-
-                        <a href="https://github.com/ufosc/resources">
-                            <iron-icon icon="icons:build"></iron-icon>
-                            <span>Resources</span>
-                        </a>
-                    </paper-menu>
-                </paper-scroll-header-panel>
-
-                <!-- Main Screen -->
-                <paper-scroll-header-panel main id="headerPanelMain" condenses
-						keep-condensed-header>
-
-                    <!-- Main Toolbar -->
-                    <paper-toolbar id="mainToolbar" class="tall">
-                        <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle>
-								</paper-icon-button>
-
-                        <!-- Site Name name -->
-                        <div class="middle middle-container">
-                            <div class="app-name">Open Source Club</div>
-                        </div>
-
-                        <!-- Application sub title -->
-                        <div class="bottom bottom-container">
-                            <div class="bottom-title">At the University of Florida</div>
-                        </div>
-                    </paper-toolbar>
-
-                    <!-- Main Content -->
-                    <div class="horizontal layout wrap">
-
-                        <!-- Header section -->
-                        <paper-card class="main-content" alt="Club Logo">
-                            <!-- Adding logo as a "header" -->
-                            <img class="logo" src="images/openSourceLogo.png">
-                            <div class="card-content logo-caption">
-                              	To promote, support, and create open source software.
-                            </div>
-                        </paper-card>
-
-                        <!-- About section -->
-                        <paper-card class="main-content" heading="About">
-                            <div class="card-content">
-                                The Open Source Club is a registered student
-                                organization of the University of Florida. We are a project focused group that is
-                                open to UF students of all backgrounds and disciplines
-                                who are interested in free and open source software.
-                                <br> <br>
-                                Our goal is to foster a community of makers, who want to solve problems, both in and off campus. Come to learn about open source, and stay to create it! Find more about the club <a href="https://github.com/ufosc/resources/blob/master/introduction.md">here</a>.
-                            </div>
-                        </paper-card>
-
-                        <!-- Upcoming events -->
-                        <paper-card class="main-content" heading="Upcoming Events">
-                            <div class="card-content">
-                                For an up-to-date list of our latest events, check out our <a href="https://www.facebook.com/groups/ufosc/events/">Facebook page</a> and sign up for our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfeU1RSGQWOZfvQXLrUGnDAKvVAqO7gc3TZySmN1CFhCM9uog/viewform?c=0&w=1">email list</a>.
-                            </div>
-                        </paper-card>
-
-                        <!-- Contact Us section -->
-                        <paper-card class="main-content" heading="Contact Us">
-                            <div class="card-content">
-                                For more information, email us at
-                                <a href="mailto:gator.osc@gmail.com">gator.osc@gmail.com</a>
-                                or check us out on:
-                                <a href="https://github.com/UFOSC">Github</a>,
-                                <a href="https://ufosc.slack.com/">Slack</a>,
-				                and 
-                                <a href="https://www.facebook.com/groups/ufosc/">Facebook</a>.
-                            </div>
-                        </paper-card>
-
-                    </div>
-
-                </paper-scroll-header-panel>
-            </paper-drawer-panel>
-        </template>
-
-        
+        <!-- Redirect to new site-->
         <script>
             window.onload = function() {
                 window.location.replace("https://ufopensource.club");
             }
         </script>
-        
-        <!-- build:js scripts/app.js -->
-        <script src="scripts/app.js"></script>
 
     </body>
-
 </html>

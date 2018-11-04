@@ -1,9 +1,3 @@
 # Website
 
-This is the code for the [official club website](https://ufosc.github.io/).
-
-## Note
-
-This really needs a full refresh, but it's not used enough to warrant a ton of time put into it. Current problems: Polymer 1 is outdated and slow, the site wasn't designed with best practices, needs to automatically sync with the calender/Facebook/GitHub. 
-
-Click on the [IDEAS.md](IDEAS.md) file to learn more about how to get started on refreshing the website!
+This is the old website for the Open Source Club. It has been replaced by [this new repo](https://github.com/ufosc/club-website). It currently serves as a redirect to the new website at [ufopensource.club/](https://ufopensource.club/). The old code can be found on the archive branch.
